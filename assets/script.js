@@ -38,16 +38,19 @@ function getWeather() {
             }
 
             // (K − 273.15) × 9/5 + 32 = °F is formula for k to f
-            // temp
             let weatherPic = (data.list[0].weather[0].icon);
             let date = (data.list[0].dt_txt);
             let temp = (data.list[0].main.temp);
+            temp = temp - 273.15;
+            temp = temp * 9;
+            temp = temp / 5;
+            temp = temp + 32;
             let windSpeed = (data.list[0].wind.speed);
             let humidity = (data.list[0].main.humidity);
             selectedCity.textContent = cityName + " (" + dayjs(date).format('MM/DD/YYYY') + ") ";
             selectedCity.append(weatherPic);
             selectedCity.appendChild(table);
-            table.append("Temp: " + temp + "°F");
+            table.append("Temp: " + Math.round(temp) + "°F");
             table.append(createTableRow);
             createTableRow.append("Wind: " + Math.round(windSpeed) + " MPH");
             let createTableRow1 = (document.createElement('tr'));
