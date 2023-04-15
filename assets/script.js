@@ -52,7 +52,10 @@ function getWeather() {
             let humidity = (data.list[0].main.humidity);
             selectedCity.textContent = cityName + " (" + dayjs(date).format('MM/DD/YYYY') + ") ";
             currentPicEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
+            currentPicEl.setAttribute("alt", data.list[0].weather[0].description);
+            selectedCity.append(currentPicEl);
             currentPicEl.append(weatherPic);
+
             selectedCity.appendChild(table);
             table.append("Temp: " + Math.round(temp) + "°F");
             table.append(createTableRow);
