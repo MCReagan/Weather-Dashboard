@@ -3,7 +3,7 @@ const APIKey = "2407265d623bf7d962c05a67c5a0fc7d";
 var searchBar = document.getElementById('searchBar');
 var searchButton = document.getElementById('searchButton');
 var forecast = document.getElementsByClassName('forecast');
-var selectedCity = document.getElementsByClassName('selectedCity');
+var selectedCity = document.getElementById('selectedCity');
 var cityButtons = document.getElementsByClassName('cityButtons');
 
 searchButton.addEventListener('click', function () {
@@ -25,6 +25,8 @@ function getWeather() {
             return response.json();
         })
         .then(function (data) {
+            var table = document.createElement('table')
+            var createTableRow = document.createElement('tr');
             for (var i = 0; i < data.list.length; i++) {
                 console.log(data.list[i]);
                 console.log(data.list[i].dt_txt);
@@ -32,7 +34,24 @@ function getWeather() {
                 console.log(data.list[i].wind.speed);
                 console.log(data.list[i].main.humidity);
                 console.log(data.list[i].weather[0].icon);
-  
+
             }
+
+            // (K − 273.15) × 9/5 + 32 = °F is formula for k to f
+            // temp
+            let weatherPic = (data.list[0].weather[0].icon);
+            let date = (data.list[0].dt_txt);
+            let temp = (data.list[0].main.temp);
+            let windSpeed = (data.list[0].wind.speed);
+            let humidity = (data.list[0].main.humidity);
+            selectedCity.textContent = cityName + " (" + dayjs(date).format('MM/DD/YYYY') + ") ";
+            selectedCity.append(weatherPic);
+            selectedCity.appendChild(table);
+            table.append("Temp: " + temp + "°F");
+            table.append(createTableRow);
+            createTableRow.append("Wind: " + Math.round(windSpeed) + " MPH");
+            let createTableRow1 = (document.createElement('tr'));
+            createTableRow.appendChild(createTableRow1);
+            createTableRow1.append("Humidity: " + humidity + " %");
         })
 };
