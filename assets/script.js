@@ -49,10 +49,7 @@ function getWeather() {
             let weatherPic = (data.list[0].weather[0].icon);
             let date = (data.list[0].dt_txt);
             let temp = (data.list[0].main.temp);
-            temp = temp - 273.15;
-            temp = temp * 9;
-            temp = temp / 5;
-            temp = temp + 32;
+            temp = (((temp - 273.15) * 1.8) + 32);
             let windSpeed = (data.list[0].wind.speed);
             let humidity = (data.list[0].main.humidity);
             selectedCity.textContent = cityName + " (" + dayjs(date).format('MM/DD/YYYY') + ") ";
@@ -67,22 +64,26 @@ function getWeather() {
             let createTableRow1 = (document.createElement('tr'));
             table.appendChild(createTableRow1);
             createTableRow1.append("Humidity: " + humidity + " %");
-            
-            for (var i = 6; i < data.list.length; i += 8) {
+
+            for (var i = 7; i < data.list.length; i += 8) {
                 tableWeather[i] = {
                     date: (data.list[i].dt_txt),
                     weatherPic: (data.list[i].weather[0].icon),
-                    temp: (data.list[i].main.temp),
+                    temp: (Math.round(((((data.list[i].main.temp))) - 273.15) * 1.8) + 32),
                     windSpeed: (data.list[i].wind.speed),
                     humidity: (data.list[i].main.humidity)
                 }
                 tableWeather1.push(tableWeather[i]);
             }
 
-            for (var i=0; i < 5; i++) {                   
-                forecast[i].textContent = (dayjs(tableWeather1[i].date).format('MM/DD/YYYY') + tableWeather1[i].weatherPic + tableWeather1[i].temp + tableWeather1[i].windSpeed + tableWeather1[i].humidity);
+            for (var i = 0; i < 5; i++) {
+                
+                forecast[i].textContent = (dayjs(tableWeather1[i].date).format('MM/DD/YYYY') + tableWeather1[i].weatherPic + "Temp: " + tableWeather1[i].temp + "°F" + "Wind: " + tableWeather1[i].windSpeed + " MPH" + "Humidity: " + tableWeather1[i].humidity + "%");
             }
-                        
+
             localStorage.clear;
         })
-    };
+};
+
+
+
