@@ -5,6 +5,8 @@ var searchButton = document.getElementById('searchButton');
 var forecast = document.getElementsByClassName('forecast');
 var selectedCity = document.getElementById('selectedCity');
 var cityButtons = document.getElementsByClassName('cityButtons');
+const currentPicEl = document.getElementById("current-pic");
+
 
 searchButton.addEventListener('click', function () {
     if (searchBar.value) {
@@ -27,13 +29,14 @@ function getWeather() {
         .then(function (data) {
             var table = document.createElement('table')
             var createTableRow = document.createElement('tr');
-            for (var i = 0; i < data.list.length; i++) {
-                console.log(data.list[i]);
+            for (var i = 5; i < data.list.length; i += 8) {
+                
                 console.log(data.list[i].dt_txt);
                 console.log(data.list[i].main.temp);
                 console.log(data.list[i].wind.speed);
                 console.log(data.list[i].main.humidity);
                 console.log(data.list[i].weather[0].icon);
+                
 
             }
 
@@ -48,7 +51,8 @@ function getWeather() {
             let windSpeed = (data.list[0].wind.speed);
             let humidity = (data.list[0].main.humidity);
             selectedCity.textContent = cityName + " (" + dayjs(date).format('MM/DD/YYYY') + ") ";
-            selectedCity.append(weatherPic);
+            currentPicEl.setAttribute("src", "https://openweathermap.org/img/wn/" + weatherPic + "@2x.png");
+            currentPicEl.append(weatherPic);
             selectedCity.appendChild(table);
             table.append("Temp: " + Math.round(temp) + "°F");
             table.append(createTableRow);
