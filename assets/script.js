@@ -3,8 +3,9 @@ const APIKey = "2407265d623bf7d962c05a67c5a0fc7d";
 var searchBar = document.getElementById('searchBar');
 var searchButton = document.getElementById('searchButton');
 var forecast = document.getElementsByClassName('forecast');
+var selectedCity = document.getElementsByClassName('selectedCity');
+var cityButtons = document.getElementsByClassName('cityButtons');
 
-// need a function to gather search input for user and save to local storage
 searchButton.addEventListener('click', function () {
     if (searchBar.value) {
         localStorage.setItem("city", searchBar.value);
@@ -16,9 +17,7 @@ searchButton.addEventListener('click', function () {
     return;
 });
 
-// need a function to take search input and make a call to weathermap API
-// function needs to get input and give lat/lon data
-function getWeather(cityName) {
+function getWeather() {
     var cityName = localStorage.getItem("city");
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
     fetch(queryURL)
@@ -33,12 +32,7 @@ function getWeather(cityName) {
                 console.log(data.list[i].wind.speed);
                 console.log(data.list[i].main.humidity);
                 console.log(data.list[i].weather[0].icon);
-
-                
-                // var createTable = document.createElement('table');
-                // var tableRow = document.createElement('tr');
-
-                // forecast.append(data.list[i]. )
+  
             }
         })
 };
