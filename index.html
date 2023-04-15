@@ -6,11 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./assets/normalize.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
     <link ref="stylesheet" href="./assets/style.css">
 </head>
 
 <body>
-
+    <header class="row">
+        <div class="col-4 bg-primary"></div>
+        <div class="col-8 p-0">
+            <nav class="navbar bg-body-tertiary bg-primary d-flex">
+                <div class="container-fluid justify-content-center">
+                    <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="p-3">
+        <div class="row">
+            <div class="col-4">
+                <div id="citySearch">
+                    <label class="form-label">Search for a City:</label>
+                    <input type="search" id="searchBar" class="form-control mb-3 ">
+                    <input class="btn btn-primary w-100 mb-3" type="button" value="Search">
+                </div>
+                <div id="cityButtons" class="mt-3">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Atlanta">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Denver">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Seattle">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="San Francisco">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Orlando">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="New York">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Chicago">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Dallas">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Austin">
+                    <input class="btn btn-dark w-100 mb-3" type="button" value="Anchorage">
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-body selectedCity">
+                        Atlanta (4/14/2023)
+                    </div>
+                </div>
+                <div>
+                    <p>5-day Forecast:</p>
+                </div>
+                <div class="row">
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                    <div class="col forecast bg-primary text-white ml-3 mb-3 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 <script src="./assets/script.js"></script>
