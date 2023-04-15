@@ -31,7 +31,6 @@ function getWeather() {
     fetch(queryURL)
         .then(function (response) {
             if (response.status !== 404) {
-                console.log(response);
                 return response.json();
             } else {
                 alert("Please enter a valid city name.")
@@ -44,15 +43,22 @@ function getWeather() {
         .then(function (data) {
             var table = document.createElement('table')
             var createTableRow = document.createElement('tr');
-            for (var i = 5; i < data.list.length; i += 8) {
-
-                // console.log(data.list[i].dt_txt);
+            for (var i = 6; i < data.list.length; i += 8) {
+                var tableWeather = {
+                    date: (data.list[i].dt_txt),
+                    weatherPic: (data.list[i].weather[0].icon),
+                    temp: (data.list[i].main.temp),
+                    windSpeed: (data.list[i].wind.speed),
+                    humidity: (data.list[i].main.humidity)
+                };
+                console.log(tableWeather);
+                // console.logdata.list[i].dt_txt));
+                // console.log(data.list[i].weather[0].icon);
                 // console.log(data.list[i].main.temp);
                 // console.log(data.list[i].wind.speed);
                 // console.log(data.list[i].main.humidity);
-                // console.log(data.list[i].weather[0].icon);
 
-
+             
             }
 
             // (K − 273.15) × 9/5 + 32 = °F is formula for k to f
