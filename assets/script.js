@@ -19,6 +19,12 @@ searchButton.addEventListener('click', function () {
     return;
 });
 
+function buttonCity(e) {
+    localStorage.setItem("city", e);
+    getWeather();
+    return;
+}
+
 function getWeather() {
     var cityName = localStorage.getItem("city");
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
@@ -31,11 +37,11 @@ function getWeather() {
             var createTableRow = document.createElement('tr');
             for (var i = 5; i < data.list.length; i += 8) {
                 
-                console.log(data.list[i].dt_txt);
-                console.log(data.list[i].main.temp);
-                console.log(data.list[i].wind.speed);
-                console.log(data.list[i].main.humidity);
-                console.log(data.list[i].weather[0].icon);
+                // console.log(data.list[i].dt_txt);
+                // console.log(data.list[i].main.temp);
+                // console.log(data.list[i].wind.speed);
+                // console.log(data.list[i].main.humidity);
+                // console.log(data.list[i].weather[0].icon);
                 
 
             }
@@ -55,13 +61,13 @@ function getWeather() {
             currentPicEl.setAttribute("alt", data.list[0].weather[0].description);
             selectedCity.append(currentPicEl);
             currentPicEl.append(weatherPic);
-
             selectedCity.appendChild(table);
             table.append("Temp: " + Math.round(temp) + "°F");
             table.append(createTableRow);
             createTableRow.append("Wind: " + Math.round(windSpeed) + " MPH");
             let createTableRow1 = (document.createElement('tr'));
-            createTableRow.appendChild(createTableRow1);
+            table.appendChild(createTableRow1);
             createTableRow1.append("Humidity: " + humidity + " %");
+            localStorage.clear;
         })
 };
