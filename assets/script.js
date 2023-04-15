@@ -39,28 +39,12 @@ function getWeather() {
                 return;
             }
         })
-        
+
         .then(function (data) {
+            var tableWeather = [];
+            var tableWeather1 = [];
             var table = document.createElement('table')
             var createTableRow = document.createElement('tr');
-            for (var i = 6; i < data.list.length; i += 8) {
-                var tableWeather = {
-                    date: (data.list[i].dt_txt),
-                    weatherPic: (data.list[i].weather[0].icon),
-                    temp: (data.list[i].main.temp),
-                    windSpeed: (data.list[i].wind.speed),
-                    humidity: (data.list[i].main.humidity)
-                };
-                console.log(tableWeather);
-                // console.logdata.list[i].dt_txt));
-                // console.log(data.list[i].weather[0].icon);
-                // console.log(data.list[i].main.temp);
-                // console.log(data.list[i].wind.speed);
-                // console.log(data.list[i].main.humidity);
-
-             
-            }
-
             // (K − 273.15) × 9/5 + 32 = °F is formula for k to f
             let weatherPic = (data.list[0].weather[0].icon);
             let date = (data.list[0].dt_txt);
@@ -83,6 +67,22 @@ function getWeather() {
             let createTableRow1 = (document.createElement('tr'));
             table.appendChild(createTableRow1);
             createTableRow1.append("Humidity: " + humidity + " %");
+            
+            for (var i = 6; i < data.list.length; i += 8) {
+                tableWeather[i] = {
+                    date: (data.list[i].dt_txt),
+                    weatherPic: (data.list[i].weather[0].icon),
+                    temp: (data.list[i].main.temp),
+                    windSpeed: (data.list[i].wind.speed),
+                    humidity: (data.list[i].main.humidity)
+                }
+                tableWeather1.push(tableWeather[i]);
+            }
+
+            for (var i=0; i < 5; i++) {
+                console.log(tableWeather1[i]);
+            }
+
             localStorage.clear;
         })
-};
+    };
