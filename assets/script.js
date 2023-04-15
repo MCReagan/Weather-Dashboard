@@ -79,10 +79,10 @@ function getWeather() {
                 tableWeather1.push(tableWeather[i]);
             }
 
-            for (var i=0; i < 5; i++) {
-                console.log(tableWeather1[i]);
+            for (var i=0; i < 5; i++) {                   
+                forecast[i].textContent = (dayjs(tableWeather1[i].date).format('MM/DD/YYYY') + tableWeather1[i].weatherPic + tableWeather1[i].temp + tableWeather1[i].windSpeed + tableWeather1[i].humidity);
             }
-
+                        
             localStorage.clear;
         })
     };
