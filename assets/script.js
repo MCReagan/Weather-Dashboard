@@ -7,7 +7,6 @@ var selectedCity = document.getElementById('selectedCity');
 var cityButtons = document.getElementsByClassName('cityButtons');
 const currentPicEl = document.getElementById("current-pic");
 
-
 searchButton.addEventListener('click', function () {
     if (searchBar.value) {
         localStorage.setItem("city", searchBar.value);
@@ -77,8 +76,21 @@ function getWeather() {
             }
 
             for (var i = 0; i < 5; i++) {
-                
-                forecast[i].textContent = (dayjs(tableWeather1[i].date).format('MM/DD/YYYY') + tableWeather1[i].weatherPic + "Temp: " + tableWeather1[i].temp + "°F" + "Wind: " + tableWeather1[i].windSpeed + " MPH" + "Humidity: " + tableWeather1[i].humidity + "%");
+                var createImage = document.createElement('img');
+                var table1 = document.createElement('table');
+                var createTableRow2 = document.createElement('tr');
+                var createTableRow3 = document.createElement('tr');
+                console.log(tableWeather1);
+                forecast[i].textContent = dayjs(tableWeather1[i].date).format('MM/DD/YYYY');
+                forecast[i].append(createImage);
+                createImage.setAttribute("src", "https://openweathermap.org/img/wn/" + tableWeather1[i].weatherPic + "@2x.png");
+                createImage.append(tableWeather1[i].weatherPic);
+                forecast[i].appendChild(table1);
+                table1.append("Temp: " + tableWeather1[i].temp + "°F");
+                table1.append(createTableRow2);
+                createTableRow2.append("Wind: " + tableWeather1[i].windSpeed + " MPH");
+                createTableRow2.append(createTableRow3);
+                createTableRow3.append("Humidity: " + tableWeather1[i].humidity + "%");
             }
 
             localStorage.clear;
