@@ -22,6 +22,7 @@ img {
 
 .forecastText {
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 .forecast {
@@ -30,15 +31,17 @@ img {
 }
 
 .btn-dark {
-    background-color: gray;
+    background-color: #9B9B9B;
     color: black;
     font-weight: 500;
-    border: 0;
+    border: 1px white;
+    border-radius: 5px;
 }
 
 
 table {
     font-weight: 400;
+    padding-top: 0;
 }
 
 header {
