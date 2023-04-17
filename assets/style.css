@@ -1,4 +1,52 @@
+
+#selectedCity {
+    font-weight: bold;
+}
+
+#citySearch {
+    border-bottom: 1px solid gray;
+}
+
 img {
     max-width: 50px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.navbar {
+    font-weight: bold;
+    
+}
+
+.forecastText {
+    font-weight: bold;
+}
+
+.forecast {
+   font-weight: bold;
+   background-color: #313E62;
+}
+
+.btn-dark {
+    background-color: gray;
+    color: black;
+    font-weight: 500;
+    border: 0;
+}
+
+
+table {
+    font-weight: 400;
+}
+
+header {
+    background: rgb(103, 106, 201);
+        background: linear-gradient(90deg, rgba(103, 106, 201, 1) 0%, rgba(9, 9, 121, 1) 100%);
+}
+
+table {
+    margin: 20px 0;
 }
 
