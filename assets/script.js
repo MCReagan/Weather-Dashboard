@@ -28,7 +28,7 @@ function buttonCity(e) {
 
 function getWeather() {
     var cityName = localStorage.getItem("city");
-    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey + "&units=imperial";
     // fetch gets the JSON object from openweathermap api
     fetch(queryURL)
         .then(function (response) {
@@ -51,7 +51,6 @@ function getWeather() {
             let weatherPic = (data.list[0].weather[0].icon);
             let date = (data.list[0].dt_txt);
             let temp = (data.list[0].main.temp);
-            temp = (((temp - 273.15) * 1.8) + 32);
             let windSpeed = (data.list[0].wind.speed);
             let humidity = (data.list[0].main.humidity);
             selectedCity.textContent = cityName + " (" + dayjs(date).format('MM/DD/YYYY') + ") ";
@@ -71,8 +70,8 @@ function getWeather() {
                 tableWeather[i] = {
                     date: (data.list[i].dt_txt),
                     weatherPic: (data.list[i].weather[0].icon),
-                    temp: (Math.round(((((data.list[i].main.temp))) - 273.15) * 1.8) + 32),
-                    windSpeed: (data.list[i].wind.speed),
+                    temp: (Math.round((data.list[i].main.temp))),
+                    windSpeed: (Math.round((data.list[i].wind.speed))),
                     humidity: (data.list[i].main.humidity)
                 }
                 tableWeather1.push(tableWeather[i]);
