@@ -17,6 +17,8 @@ To use the project, follow these steps:
 3. Open with VSCode or other software
 4. Open index.html in browser
 
+You may visit the deployed application at https://mcreagan.github.io/Weather-Dashboard/
+
 ## Usage
 
 To use the project, follow these steps:
