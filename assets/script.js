@@ -20,8 +20,8 @@ searchButton.addEventListener('click', function () {
 });
 
 // this function sets the value of cityName in local storage as the value of the button clicked
-function buttonCity(e) {
-    localStorage.setItem("city", e);
+function buttonCity(event) {
+    localStorage.setItem("city", event);
     getWeather();
     return;
 }
