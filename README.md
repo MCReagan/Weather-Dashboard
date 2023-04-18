@@ -25,6 +25,10 @@ Enter city into city search bar or click the corresponding button for the city y
 
 Previous search results will still be available upon page reload.
 
+## Screenshot
+
+![Screenshot](/assets/127.0.0.1_5500_index.html%20(3).png)
+
 ## Contributing
 
 If you would like to contribute to the project, please follow these steps:
